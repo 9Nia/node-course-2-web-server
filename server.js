@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     if (err) {
       console.log('Unable to append to server.log.');
     }
-  })
+  });
   next();
 });
 
@@ -48,10 +48,17 @@ app.get('/about', (req, res) => {
   });
 });
 
+app.get('/project', (req, res) => {
+  res.render('project.hbs',{
+    someP:'portfolio project here'
+  });
+});
+
 app.get('/bad', (req, res) => {
   res.send({
   errorMessage: 'Unable to handle request'});
 });
+
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
